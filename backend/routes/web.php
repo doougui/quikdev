@@ -13,5 +13,5 @@
 |
 */
 
-$router->get('/movies', 'MovieController@index');
-$router->get('/movies/{movie}', 'MovieController@show');
+$router->get('/movies', 'MoviesController@index');
+$router->get('/movies/{movie:[0-9]+}', 'MoviesController@show');

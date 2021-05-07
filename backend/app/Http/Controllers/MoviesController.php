@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Traits\ExternalAPI;
 
 /**
- * Class MovieController
+ * Class MoviesController
  * @package App\Http\Controllers
  */
-class MovieController extends Controller
+class MoviesController extends Controller
 {
     use ExternalAPI;
 
