@@ -12,12 +12,6 @@ trait ExternalAPI
     protected $params;
     protected $url;
 
-    public function __construct()
-    {
-        $this->baseUrl = config('services.tmdb.url');
-        $this->key = config('services.tmdb.api_key');
-    }
-
     public final function get()
     {
         $this->buildUrl();
