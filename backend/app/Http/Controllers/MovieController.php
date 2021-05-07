@@ -39,10 +39,12 @@ class MovieController extends Controller
     }
 
     /**
-     *
+     * @param $movie
      */
-    public function show()
+    public function show($movie)
     {
-        //
+        $this->endpoint = 'movie/' . $movie;
+
+        return response($this->get(), 200);
     }
 }

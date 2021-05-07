@@ -15,7 +15,6 @@ trait ExternalAPI
     public final function get()
     {
         $this->buildUrl();
-
         return Http::get($this->url);
     }
 
