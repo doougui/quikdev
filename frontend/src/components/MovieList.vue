@@ -17,10 +17,12 @@ export default {
   components: {
     MovieCard,  
   },
+
   data: () => ({
     movies: [],
     page: 1,
   }),
+
   computed: {
     sortedMovies: function () {
       return [...this.movies].sort((a, b) => {
@@ -28,6 +30,7 @@ export default {
       });
     }
   },
+  
   mounted () {
     axios.get('http://localhost:8000/movies')
       .then(response => this.movies = response.data.results);
