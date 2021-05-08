@@ -15,3 +15,4 @@
 
 $router->get('/movies', 'MoviesController@index');
 $router->get('/movies/{movie:[0-9]+}', 'MoviesController@show');
+$router->get('/genres', 'GenresController@index');
