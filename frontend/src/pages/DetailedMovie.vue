@@ -31,9 +31,9 @@
 
               <div class="mx-4">
                 <h1>{{ movie.original_title }}</h1>
-                <p class="mb-0"><span class="blue--text accent-4" text>Genres: </span>{{ genres }}</p>
-                <p class="mb-0"><span class="blue--text accent-4" text>Production companies: </span>{{ companies }}</p>
-                <p class="mb-0"><span class="blue--text accent-4" text>Production countries: </span>{{ countries }}</p>
+                <p class="mb-0"><span class="blue--text accent-4" text>Genres: </span>{{ getJoinedData(movie.genres) }}</p>
+                <p class="mb-0"><span class="blue--text accent-4" text>Production companies: </span>{{ getJoinedData(movie.production_companies) }}</p>
+                <p class="mb-0"><span class="blue--text accent-4" text>Production countries: </span>{{ getJoinedData(movie.production_countries) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Original language: </span>{{ movie.original_language }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Release date: </span>{{ movie.release_date }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Runtime: </span>{{ movie.runtime }} minutes</p>
@@ -59,6 +59,8 @@
 
 <script>
 import api from '../services/api';
+import { getJoinedData } from '../utils/helpers'; 
+
 import Header from '../components/Header';
 
 export default {
@@ -70,28 +72,14 @@ export default {
     movie: [],
   }),
 
-  computed: {
-    genres: function () {
-      return this.movie.genres.map(genre => {
-        return genre.name;
-      }).join(', ');
-    },
-    companies: function () {
-      return this.movie.production_companies.map(company => {
-        return company.name;
-      }).join(', ');
-    },
-    countries: function () {
-      return this.movie.production_countries.map(country => {
-        return country.name;
-      }).join(', ');
-    }
-  },
-
   mounted () {
     api.get(`movies/${this.$route.params.id}`)
       .then(response => this.movie = response.data)
       .catch(this.movie = []);
+  },
+
+  methods: {
+    getJoinedData,
   },
 };
 </script>

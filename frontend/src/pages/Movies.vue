@@ -81,7 +81,15 @@ export default {
       }
 
       api.get(endpoint)
-        .then(response => this.movies = response.data.results)
+        .then(response => {          
+          response.data.results.forEach(movie => {
+            movie.genre_names = this.genres.filter(genre => {
+              return movie.genre_ids.includes(genre.id);
+            });
+            
+            this.movies.push(movie);
+          });
+        })
         .catch(this.movies = []);
     }
   }
