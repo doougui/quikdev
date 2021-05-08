@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import api from '../services/api';
 import Header from '../components/Header';
 import MovieList from '../components/MovieList';
 
@@ -55,8 +55,9 @@ export default {
   }),
 
   mounted () {
-    axios.get('http://localhost:8000/genres')
+    api.get('genres')
       .then(response => this.genres = response.data.genres)
+      .catch(this.genres = []);
     
     this.fetchMovies();
   },
@@ -71,20 +72,19 @@ export default {
 
   methods: {
     fetchMovies () {
-      if (!this.search) {
-        axios.get('http://localhost:8000/movies')
-          .then(response => this.movies = response.data.results);
-      }
-
+      let endpoint = 'movies';
+      
       if (this.search) {
-        axios.get(`http://localhost:8000/movies?name=${this.search}`)
-          .then(response => this.movies = response.data.results);
+        endpoint = `movies?search=${this.search}`;
       }
 
       if (this.selectedGenres.length) {
-        axios.get(`http://localhost:8000/movies?genres=${this.selectedGenres.join(',')}`)
-          .then(response => this.movies = response.data.results);
+        endpoint = `movies/genres/${this.selectedGenres.join(',')}`;
       }
+
+      api.get(endpoint)
+        .then(response => this.movies = response.data.results)
+        .catch(this.movies = []);
     }
   }
 };

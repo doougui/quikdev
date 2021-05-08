@@ -25,15 +25,18 @@ class MoviesController extends Controller
     {
         $this->endpoint = 'trending/movie/week';
 
-        if (request('name')) {
+        if (request('search')) {
             $this->endpoint = 'search/movie';
-            $this->params = '&query=' . request('name');
+            $this->params = '&query=' . request('search');
         }
 
-        if (request('genres')) {
-            $this->endpoint = 'discover/movie';
-            $this->params = '&with_genres=' . request('genres');
-        }
+        return response($this->get(), 200);
+    }
+
+    public function genres($genres)
+    {
+        $this->endpoint = 'discover/movie';
+        $this->params = '&with_genres=' . $genres;
 
         return response($this->get(), 200);
     }
