@@ -7,6 +7,11 @@
       <v-container>
         <h1 class="mt-3">Trending Movies</h1>
 
+        <v-text-field
+          label="Search by movie name"
+          hide-details="auto"
+        ></v-text-field>
+
         <v-select
           :items="genres"
           item-text="name"
