@@ -19,6 +19,7 @@
 
     <v-card-actions>
       <v-btn
+        :to="`/${movie.id}`"
         color="blue accent-4"
         text
       >
