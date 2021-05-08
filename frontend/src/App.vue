@@ -4,12 +4,13 @@
       <Header />
     </header>
     <v-main>
-      
+      {{ movies }}
     </v-main>
   </v-app>
 </template>
 
 <script>
+import axios from 'axios';
 import Header from './components/Header';
 
 export default {
@@ -20,7 +21,12 @@ export default {
   },
 
   data: () => ({
-    //
+    movies: [],
   }),
+
+  mounted () {
+    axios.get('http://localhost:8000/movies')
+      .then(response => console.log(response));
+  }
 };
 </script>
