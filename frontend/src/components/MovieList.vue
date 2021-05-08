@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col
-      v-for="movie in sortedMovies"
+      v-for="movie in movies"
       :key="movie.id"
     >
       <MovieCard :movie="movie" />
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 import MovieCard from './MovieCard';
 
 export default {
@@ -18,22 +17,10 @@ export default {
     MovieCard,  
   },
 
+  props: ['movies'],
+
   data: () => ({
-    movies: [],
     page: 1,
   }),
-
-  computed: {
-    sortedMovies: function () {
-      return [...this.movies].sort((a, b) => {
-        return (a.original_title > b.original_title) ? 1 : -1;
-      });
-    }
-  },
-  
-  mounted () {
-    axios.get('http://localhost:8000/movies')
-      .then(response => this.movies = response.data.results);
-  }
 };
 </script>

@@ -10,6 +10,8 @@
         <v-text-field
           label="Search by movie name"
           hide-details="auto"
+          v-model.lazy="search"
+          @input="fetchMovies"
         ></v-text-field>
 
         <v-select
@@ -24,7 +26,7 @@
           persistent-hint
         ></v-select>
 
-        <MovieList />
+        <MovieList :movies="sortedMovies" />
       </v-container>
     </v-main>
   </v-app>
@@ -44,12 +46,36 @@ export default {
   },
 
   data: () => ({
+    search: '',
+    movies: [],
     genres: [],
   }),
 
   mounted () {
     axios.get('http://localhost:8000/genres')
       .then(response => this.genres = response.data.genres)
+    
+    this.fetchMovies();
   },
+
+  computed: {
+    sortedMovies: function () {
+      return [...this.movies].sort((a, b) => {
+        return (a.original_title > b.original_title) ? 1 : -1;
+      });
+    }
+  },
+
+  methods: {
+    fetchMovies () {
+      if (!this.search) {
+        axios.get('http://localhost:8000/movies')
+          .then(response => this.movies = response.data.results);
+      }
+
+      axios.get(`http://localhost:8000/movies?name=${this.search}`)
+        .then(response => this.movies = response.data.results);
+    }
+  }
 };
 </script>
