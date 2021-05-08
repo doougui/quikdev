@@ -10,7 +10,8 @@
         <v-select
           :items="genres"
           item-text="name"
-          :menu-props="{ maxWidth: '400' }"
+          :value="genres.id"
+          :menu-props="{ maxHeight: '400' }"
           label="Genres"
           multiple
           hint="Pick your desired genres"
@@ -18,13 +19,13 @@
           persistent-hint
         ></v-select>
 
-        <v-row>
+        <v-row align="stretch">
           <v-col
             v-for="movie in movies"
             :key="movie.id"
           >
             <v-card
-              max-width="344"
+              max-width="370"
             >
               <v-img
                 :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
@@ -37,6 +38,10 @@
 
               <v-card-subtitle></v-card-subtitle>
 
+              <v-card-text>
+                {{ movie.overview }}
+              </v-card-text>
+
               <v-card-actions>
                 <v-btn
                   color="blue accent-4"
@@ -44,26 +49,7 @@
                 >
                   See more
                 </v-btn>
-
-                <v-spacer></v-spacer>
-
-                <v-btn
-                  icon
-                  @click="show = !show"
-                >
-                  <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                </v-btn>
               </v-card-actions>
-
-              <v-expand-transition>
-                <div v-show="show">
-                  <v-divider></v-divider>
-
-                  <v-card-text>
-                    {{ movie.overview }}
-                  </v-card-text>
-                </div>
-              </v-expand-transition>
             </v-card>
           </v-col>
         </v-row>
@@ -88,16 +74,13 @@ export default {
     genres: [],
     page: 1,
   }),
-  computed: {
-    genresList() {
-      return this.genres.map(genre => {
-        return genre.name;
-      });
-    }
-  },
   mounted () {
     axios.get('http://localhost:8000/movies')
-      .then(response => this.movies = response.data.results);
+      .then(response => {
+        this.movies = response.data.results.sort((a, b) => {
+          return (a.original_title > b.original_title) ? 1 : -1;
+        });
+      });
     axios.get('http://localhost:8000/genres')
       .then(response => this.genres = response.data.genres)
   }
