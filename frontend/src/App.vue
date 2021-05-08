@@ -21,7 +21,7 @@
 
         <v-row align="stretch">
           <v-col
-            v-for="movie in movies"
+            v-for="movie in sortedMovies"
             :key="movie.id"
           >
             <v-card
@@ -74,13 +74,16 @@ export default {
     genres: [],
     page: 1,
   }),
+  computed: {
+    sortedMovies: function () {
+      return [...this.movies].sort((a, b) => {
+        return (a.original_title > b.original_title) ? 1 : -1;
+      });
+    }
+  },
   mounted () {
     axios.get('http://localhost:8000/movies')
-      .then(response => {
-        this.movies = response.data.results.sort((a, b) => {
-          return (a.original_title > b.original_title) ? 1 : -1;
-        });
-      });
+      .then(response => this.movies = response.data.results);
     axios.get('http://localhost:8000/genres')
       .then(response => this.genres = response.data.genres)
   }
