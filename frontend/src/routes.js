@@ -3,15 +3,15 @@ import DetailedMovie from './pages/DetailedMovie.vue';
 
 export default [
   {
-    path: '/',
+    path: '/movies',
     component: Movies,
   },
   {
-    path: '/:id(\\d+)',
+    path: '/movies/:id(\\d+)',
     component: DetailedMovie,
   },
   {
     path: '*',
-    redirect: '/',
+    redirect: '/movies',
   },
 ];
