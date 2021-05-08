@@ -5,7 +5,18 @@
     </header>
     <v-main>
       <v-container>
-        <h1>Trending Movies</h1>
+        <h1 class="mt-3">Trending Movies</h1>
+
+        <v-select
+          :items="genres"
+          item-text="name"
+          :menu-props="{ maxWidth: '400' }"
+          label="Genres"
+          multiple
+          hint="Pick your desired genres"
+          class="my-5"
+          persistent-hint
+        ></v-select>
 
         <v-row>
           <v-col
@@ -74,12 +85,21 @@ export default {
 
   data: () => ({
     movies: [],
+    genres: [],
     page: 1,
   }),
-
+  computed: {
+    genresList() {
+      return this.genres.map(genre => {
+        return genre.name;
+      });
+    }
+  },
   mounted () {
     axios.get('http://localhost:8000/movies')
       .then(response => this.movies = response.data.results);
+    axios.get('http://localhost:8000/genres')
+      .then(response => this.genres = response.data.genres)
   }
 };
 </script>
