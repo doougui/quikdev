@@ -18,9 +18,5 @@ export default {
   },
 
   props: ['movies'],
-
-  data: () => ({
-    page: 1,
-  }),
 };
 </script>
