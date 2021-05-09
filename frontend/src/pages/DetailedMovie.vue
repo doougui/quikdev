@@ -19,17 +19,18 @@
           </v-icon>Go to previous page
         </v-btn>
 
-        <div class="d-flex">
+        <div class="d-flex flex-wrap">
           <div class="movie-info">
             <h2 class="mt-4 font-weight-light text-uppercase">Movie Information</h2>
 
-            <div class="d-flex">
+            <div class="d-flex flex-wrap">
               <v-img
                 :src="(movie.poster_path) ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `https://via.placeholder.com/500&text=Cover%20not%20found`"
                 max-width="300"
+                class="mr-4"
               ></v-img>
 
-              <div class="mx-4">
+              <div class="mr-4" style="max-width: 500px; min-width: 250px;">
                 <h1>{{ movie.original_title }}</h1>
                 <p class="mb-0"><span class="blue--text accent-4" text>Genres: </span>{{ getJoinedData(movie.genres) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Production companies: </span>{{ getJoinedData(movie.production_companies) }}</p>
@@ -38,7 +39,7 @@
                 <p class="mb-0"><span class="blue--text accent-4" text>Release date: </span>{{ getFormattedDate(movie.release_date) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Runtime: </span>{{ movie.runtime }} minutes</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Status: </span>{{ movie.status }}</p>
-                <p class="d-block mt-3 font-weight-light" style="max-width: 500px;">{{ movie.overview }}</p>
+                <p class="d-block mt-3 font-weight-light">{{ movie.overview }}</p>
               </div>
             </div>
           </div>
