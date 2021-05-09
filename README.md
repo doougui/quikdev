@@ -48,6 +48,14 @@ Assuming you have [NPM](https://www.npmjs.com/) installed, enter the `backend/` 
 npm install
 ``` 
 
+#### Vue CLI
+
+If you don't have `@vue/cli` and `@vue/cli-service-global` installed yet, run the following command:
+
+```
+npm install -g @vue/cli @vue/cli-service-global
+```
+
 #### Local server
 
 Inside the `frontend/` folder, type the following command:
