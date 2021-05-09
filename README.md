@@ -69,7 +69,7 @@ Endpoint: `/movies`
 Return the list of trending movies.
 ```
 
-```
+```php
 Method: GET
 Endpoint: `/movies`
 Query Params: `?search={search}`
@@ -77,21 +77,21 @@ Query Params: `?search={search}`
 Return the list of movies that have a name related to the search.
 ```
 
-```
+```php
 Method: GET
 Endpoint: `/movies/{movie}`
 
 Return the details of a single movie. The `movie` parameter must be the movie `id`.
 ```
 
-```
+```php
 Method: GET
 Endpoint: `/movies/genres/{genres}`
 
 Return the list of movies that have the specified genres. The genres are separated by comma. For example: `http://localhost:8000/movies/genres/28,14`.
 ```
 
-```
+```php
 Method: GET
 Endpoint: `/genres`
 
@@ -100,16 +100,16 @@ Return all the available movie genres.
 
 ### Vue routes
 
-```
+```php
 Method: GET
-Endpoint: `/movies`
+Route: `/movies`
 
 Return a list of trending movies.
 ```
 
-```
+```php
 Method: GET
-Endpoint: `/movies/:id`
+Route: `/movies/:id`
 
 Return the details of a single movie. The `:id` parameter must be the movie `id`.
 ```
