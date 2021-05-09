@@ -35,7 +35,7 @@
                 <p class="mb-0"><span class="blue--text accent-4" text>Production companies: </span>{{ getJoinedData(movie.production_companies) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Production countries: </span>{{ getJoinedData(movie.production_countries) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Original language: </span>{{ movie.original_language }}</p>
-                <p class="mb-0"><span class="blue--text accent-4" text>Release date: </span>{{ movie.release_date }}</p>
+                <p class="mb-0"><span class="blue--text accent-4" text>Release date: </span>{{ getFormattedDate(movie.release_date) }}</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Runtime: </span>{{ movie.runtime }} minutes</p>
                 <p class="mb-0"><span class="blue--text accent-4" text>Status: </span>{{ movie.status }}</p>
                 <p class="d-block mt-3 font-weight-light" style="max-width: 500px;">{{ movie.overview }}</p>
@@ -59,7 +59,7 @@
 
 <script>
 import api from '../services/api';
-import { getJoinedData } from '../utils/helpers'; 
+import { getJoinedData, getFormattedDate } from '../utils/helpers'; 
 
 import Header from '../components/Header';
 
@@ -80,6 +80,7 @@ export default {
 
   methods: {
     getJoinedData,
+    getFormattedDate,
   },
 };
 </script>

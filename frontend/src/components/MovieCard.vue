@@ -11,7 +11,7 @@
       {{ movie.original_title }}
     </v-card-title>
 
-    <v-card-subtitle>{{ getJoinedData(movie.genre_names) }}</v-card-subtitle>
+    <v-card-subtitle>{{ getJoinedData(movie.genre_names) }} &middot; Released at: {{ getFormattedDate(movie.release_date) }}</v-card-subtitle>
 
     <v-card-text>
       {{ movie.overview }}
@@ -30,13 +30,14 @@
 </template>
 
 <script>
-import { getJoinedData } from '../utils/helpers';
+import { getJoinedData, getFormattedDate } from '../utils/helpers';
 
 export default {
   props: ['movie'],
 
   methods: {
     getJoinedData,
+    getFormattedDate,
   }
 };
 </script>
