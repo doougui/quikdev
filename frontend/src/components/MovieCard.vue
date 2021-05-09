@@ -1,7 +1,5 @@
 <template>
-  <v-card
-    max-width="370"
-  >
+  <v-card>
     <v-img
       :src="(movie.poster_path) ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : `https://via.placeholder.com/500&text=Cover%20not%20found`"
       height="200px"
