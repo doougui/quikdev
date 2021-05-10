@@ -4,7 +4,7 @@
 
 ## :gear: Setup
 
-#### Environment
+### Environment
 
 To adjust the correct variables for your local environment, open the `docker-compose.yml` located at the root folder of the project using your favorite text editor. After that, fill this file with the corresponding information concerning your local environment. In the `environment` section you will see `TMDB_URL`, `TMDB_API_KEY` and `APP_KEY`:
 
@@ -12,7 +12,7 @@ To adjust the correct variables for your local environment, open the `docker-com
 - The `TMDB_API_KEY` must be filled with a valid TMDB api_key.
 - The `APP_KEY` should already have a default value, but if you'd like to generate a fresh key, you can [use this online key generator](http://www.unit-conversion.info/texttools/random-string-generator/). The `APP_KEY` should be 32 characters long.
 
-### Running
+### Initializing
 
 :bulb: This project runs with [Docker](https://www.docker.com/).
 
@@ -22,7 +22,7 @@ To install and run both the `backend` and the `frontend` sides of the applicatio
 docker-compose up
 ``` 
 
-#### Local server
+### Local server
 
 After following the above steps, you will be able to access your API at: `http://localhost:8000/`.
 
