@@ -1,0 +1,17 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    environment:
+      - TMDB_URL="https://api.themoviedb.org/3"
+      - TMDB_API_KEY=""
+      - APP_KEY="Q1Gw9uXLkKP7XG4ry3YpykVEczXzHHKn"
+    container_name: movie-list-aggregator-backend
+    ports:
+      - 8000:8000
+
+  frontend:
+    build: ./frontend
+    container_name: movie-list-aggregator-frontend
+    ports:
+      - 8080:8080

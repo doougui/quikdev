@@ -2,69 +2,31 @@
   QuikDev Test | Movie List Aggregator
 </h1>
 
-## :gear: Back-end
-
-### Setup
-
-:bulb: To install the required dependencies, you'll need to have [NPM](https://www.npmjs.com/) and [Composer](https://getcomposer.org/) installed in your machine.
-
-To install the backend dependencies, enter the `backend/` folder of your project using the Terminal/CMD and type the following command:
- 
-```
-npm install
-``` 
-
-and then:
-```
-composer install
-```
+## :gear: Setup
 
 #### Environment
 
-To adjust the correct variables for your local environment, create a copy of the file `.env.example` and paste as `.env` inside the project root. 
-Fill this file with the corresponding information concerning your local environment. The most import fields are `TMDB_URL`, `TMDB_API_KEY` and `APP_KEY`:
+To adjust the correct variables for your local environment, open the `docker-compose.yml` located at the root folder of the project using your favorite text editor. After that, fill this file with the corresponding information concerning your local environment. In the `environment` section you will see `TMDB_URL`, `TMDB_API_KEY` and `APP_KEY`:
 
-- The `TMDB_URL` should already be filled, but if don't, use `https://api.themoviedb.org/3`.
+- The `TMDB_URL` should already be filled, but if it isn't, fill with `https://api.themoviedb.org/3`.
 - The `TMDB_API_KEY` must be filled with a valid TMDB api_key.
-- The `APP_KEY` can be generated [using this online key generator](http://www.unit-conversion.info/texttools/random-string-generator/).
+- The `APP_KEY` should already have a default value, but if you'd like to generate a fresh key, you can [use this online key generator](http://www.unit-conversion.info/texttools/random-string-generator/). The `APP_KEY` should be 32 characters long.
 
-#### Local server
+### Running
 
-Inside the `backend/` folder, type the following command:
+:bulb: This project runs with [Docker](https://www.docker.com/).
 
+To install and run both the `backend` and the `frontend` sides of the application, `cd` into the root folder of the project using the Terminal/CMD and type the following command: 
+ 
 ```
-php -S localhost:8000 -t public
-```
-
-After that you will be able to access your API in: `http://localhost:8000/`
-
-## :desktop_computer: Front-end
-
-### Setup
-
-Assuming you have [NPM](https://www.npmjs.com/) installed, enter the `backend/` folder of your project using the Terminal/CMD and type the following command:
-
-```
-npm install
+docker-compose up
 ``` 
 
-#### Vue CLI
-
-If you don't have `@vue/cli` and `@vue/cli-service-global` installed yet, run the following command:
-
-```
-npm install -g @vue/cli @vue/cli-service-global
-```
-
 #### Local server
 
-Inside the `frontend/` folder, type the following command:
+After following the above steps, you will be able to access your API at: `http://localhost:8000/`.
 
-```
-npm run serve
-```
-
-After that you will be able to access your project in: `http://localhost:8080`
+Your front-end `Vue` app will be located at: `http://localhost:8080/`.
 
 ## :world_map: Routes
 
@@ -124,4 +86,4 @@ Return the details of a single movie. The `:id` parameter must be the movie `id`
 
 ## :checkered_flag: Conclusion
 
-Now you have both the API and the Vue front-end up and running.
+Now you have both the API and the Vue front-end up and running. Thanks for testing.
