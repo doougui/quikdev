@@ -6,7 +6,7 @@
 
 ### Environment
 
-To adjust the correct variables for your local environment, open the `docker-compose.yml` located at the root folder of the project using your favorite text editor. After that, fill this file with the corresponding information concerning your local environment. In the `environment` section you will see `TMDB_URL`, `TMDB_API_KEY` and `APP_KEY`:
+To adjust the correct variables for your local environment, create a copy of the `.env.example` file located in the root folder and paste it as `.env` in the same location as `.env.example`. Fill this file with the corresponding information concerning your local environment. As soon as you open the file, you will see the `TMDB_URL`, `TMDB_API_KEY` and `APP_KEY` variables:
 
 - The `TMDB_URL` should already be filled, but if it isn't, fill with `https://api.themoviedb.org/3`.
 - The `TMDB_API_KEY` must be filled with a valid TMDB api_key.

@@ -12,7 +12,7 @@ trait ExternalAPI
     protected $params;
     protected $url;
 
-    public final function get()
+    final public function get()
     {
         $this->buildUrl();
         return Http::get($this->url);
@@ -20,7 +20,7 @@ trait ExternalAPI
 
     private function buildUrl()
     {
-        $this->url = "{$this->baseUrl}/{$this->endpoint}?api_key=$this->key&language=en_US";
+        $this->url = "{$this->baseUrl}/{$this->endpoint}?api_key={$this->key}&language=en_US";
 
         if ($this->params) {
             $this->url .= $this->params;

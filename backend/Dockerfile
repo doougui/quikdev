@@ -5,11 +5,11 @@ RUN docker-php-ext-install mbstring tokenizer mysqli pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php -- \
   --install-dir=/usr/bin --filename=composer
 
-COPY . /app
+COPY . /api
 
-RUN cd "/app" && cp .env.example .env && composer install
+RUN cd "/api" && cp .env.example .env && composer install
 
-WORKDIR /app
+WORKDIR /api
 
 EXPOSE 8000
 
