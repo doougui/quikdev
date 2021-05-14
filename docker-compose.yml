@@ -5,6 +5,7 @@ services:
     container_name: movie-list-aggregator-frontend
     volumes:
       - ./frontend:/app
+      - /app/node_modules
     ports:
       - 8080:8080
 
@@ -19,7 +20,3 @@ services:
       - ./backend:/api
     ports:
       - 8000:8000
-
-volumes:
-  frontend:
-  backend:
